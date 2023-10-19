@@ -1,4 +1,10 @@
-import { ping, obtenerDatosPromise, procesarArchivoPromise, procesarArchivo, leerArchivos } from "../solutions/index.js";
+import {
+  ping,
+  obtenerDatosPromise,
+  procesarArchivoPromise,
+  procesarArchivo,
+  leerArchivos
+} from '../solutions/index.js'
 
 import { describe, it, beforeEach, afterEach } from 'node:test'
 import { equal, ifError } from 'node:assert/strict'
@@ -32,13 +38,12 @@ describe('3. procesarArchivoPromise', () => {
 
   it('3.1. procesarArchivo', (t, done) => {
     writeFileSync('input.txt', 'gogogo')
-    procesarArchivo((err) => {
+    procesarArchivo(err => {
       ifError(err)
-      readFile('output.txt', 'utf8')
-        .then((contenido) => {
-          equal(contenido, 'GOGOGO')
-          done()
-        })
+      readFile('output.txt', 'utf8').then(contenido => {
+        equal(contenido, 'GOGOGO')
+        done()
+      })
     })
   })
 
