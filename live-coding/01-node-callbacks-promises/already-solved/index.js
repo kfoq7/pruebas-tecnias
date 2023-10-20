@@ -8,8 +8,8 @@ export const ping = (ip, callback) => {
     client.end()
     callback(null, { time: process.hrtime(startTime), ip })
   })
-  
-  client.on('error', (err) => {
+
+  client.on('error', err => {
     client.end()
     callback(err)
   })
@@ -21,36 +21,36 @@ export const ping = (ip, callback) => {
 // })
 
 export function obtenerDatosPromise() {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
-      resolve({ data: 'datos importantes' });
-    }, 2000);
+      resolve({ data: 'datos importantes' })
+    }, 2000)
   })
 }
 
 export function procesarArchivo(callback) {
   const handleReadFile = (error, contenido) => {
     if (error) {
-      console.error('Error leyendo archivo:', error.message);
+      console.error('Error leyendo archivo:', error.message)
       callback(error)
     }
 
-    const textoProcesado = contenido.toUpperCase();
+    const textoProcesado = contenido.toUpperCase()
 
-    fs.writeFile('output.txt', textoProcesado, handleWriteFile);
+    fs.writeFile('output.txt', textoProcesado, handleWriteFile)
   }
 
   const handleWriteFile = error => {
     if (error) {
-      console.error('Error guardando archivo:', error.message);
+      console.error('Error guardando archivo:', error.message)
       callback(error)
     }
 
-    console.log('Archivo procesado y guardado con éxito');
+    console.log('Archivo procesado y guardado con éxito')
     callback(null)
   }
 
-  fs.readFile('input.txt', 'utf8', handleReadFile);
+  fs.readFile('input.txt', 'utf8', handleReadFile)
 }
 
 export async function procesarArchivoPromise() {
@@ -74,23 +74,22 @@ export async function procesarArchivoPromise() {
 
 // leerArchivos();
 
-export async function leerArchivos() {
-  console.time('leerArchivos')
-  const [a, b, c] = await Promise.all([
-    fs.promises.readFile('archivo1.txt', 'utf8'),
-    fs.promises.readFile('archivo2.txt', 'utf8'),
-    fs.promises.readFile('archivo3.txt', 'utf8')
-  ])
-  console.timeEnd('leerArchivos')
+// export async function leerArchivos() {
+//   console.time('leerArchivos')
+//   const [a, b, c] = await Promise.all([
+//     fs.promises.readFile('archivo1.txt', 'utf8'),
+//     fs.promises.readFile('archivo2.txt', 'utf8'),
+//     fs.promises.readFile('archivo3.txt', 'utf8')
+//   ])
+//   console.timeEnd('leerArchivos')
 
-  return `${a} ${b} ${c}`
-}
+//   return `${a} ${b} ${c}`
+// }
 
-
-export async function delay (ms) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve()
-    }, ms)
-  })
-}
+// export async function delay (ms) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve()
+//     }, ms)
+//   })
+// }

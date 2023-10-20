@@ -21,11 +21,9 @@ describe('Items Routes', () => {
   })
 
   it('should add a new item', async () => {
-    const response = await request(app)
-      .post('/items')
-      .send({
-        content: 'Test item'
-      })
+    const response = await request(app).post('/items').send({
+      content: 'Test item'
+    })
 
     equal(response.statusCode, 200)
     equal(response.body.content, 'Test item')
@@ -46,9 +44,11 @@ describe('Items Routes', () => {
     const response = await request(app).get('/items')
 
     equal(response.statusCode, 200)
-    deepStrictEqual(response.body, [{
-      id: 1,
-      content: 'Item 1'
-    }])
+    deepStrictEqual(response.body, [
+      {
+        id: 1,
+        content: 'Item 1'
+      }
+    ])
   })
 })
